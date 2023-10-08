@@ -5,7 +5,7 @@
 # Set this for the build RVU to use
 RVU ?= L17.08
 # Set this on the command line to load custom environment parameters.
-HOSTNAME ?= $(uname -n)
+HOSTNAME ?= $(shell uname -n)
 
 # Include custom system overrides for cross-compilation, if any
 -include environment.$(HOSTNAME)
