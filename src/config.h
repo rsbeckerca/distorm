@@ -99,6 +99,19 @@ This library is licensed under the BSD license. See the file COPYING.
 
 /* End of __TINYC__ */
 
+#elif __TANDEM
+
+#include <stdint.h>
+
+#define _DLLEXPORT_
+#define _FASTCALL_
+#define _INLINE_ inline
+
+/* Set endianity: */
+#define BE_SYSTEM
+
+/* End of __TANDEM */
+
 #elif _MSC_VER
 
 /* stdint alternative is defined in distorm.h */

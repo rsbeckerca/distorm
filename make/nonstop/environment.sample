@@ -1,0 +1,28 @@
+# Sample environment file for cross-compiling under Windows/Cygwin
+
+# Base setup varibles
+
+# Cygwin Root for cross compilers
+CYGWIN_ROOT:=/cygdrive/c/Program Files (x86)/HPE NonStop
+# Windows form of the cross compiler root
+WINDOWS_ROOT:=C:\\Program Files (x86)\\HPE NonStop
+# Escaped Windows form for internal cross-compiler tools
+WINDOWS_ROOT_ESC:=C:\\\\Program Files (x86)\\\\HPE NonStop
+# Minimal build path in Cygwin form
+BUILD_PATH="$(CYGWIN_ROOT)/$(RVU)/usr/bin:/usr/local/bin:/usr/bin:/bin"
+# Escaped form of the RVU
+RVU_ESC = $(shell echo $(RVU) | sed 's/\./\\\\./')
+
+# Export variables
+
+# The root compiler directory, needed for internal cross compiler tools
+export COMP_ROOT:=$(WINDOWS_ROOT)\\$(RVU)
+# Set the build OS release version using internal naming standards
+export NONSTOPOSVERSION := $(RVU)
+# The include directory for use by c99 where headers are located
+export NSDEE_SYS_INCLUDE_PATH:=$(WINDOWS_ROOT)\\$(RVU)\\usr\\include
+# The escaped include directory for use by c99 where headers are located
+export NSDEE_SYS_INCLUDE_PATH_ESC:=$(WINDOWS_ROOT_ESC)\\\\$(RVU_ESC)\\\\usr\\\\include
+# Internal path variable used by internal cross compiler tools
+export PATH+WHATEVER:=$(WINDOWS_ROOT)\\$(RVU)\\usr\\bin;C:\\cygwin64\\bin
+

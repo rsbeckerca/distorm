@@ -42,7 +42,11 @@ void str_hex(_WString* s, const uint8_t* buf, unsigned int len)
 	s->length = len * 2;
 	s->p[len * 2] = 0;
 	do {
+#ifdef __TANDEM
+		s->p[i]= RSHORT(&TextBTable[(*buf) * 2]);
+#else
 		RSHORT(&s->p[i]) = RSHORT(&TextBTable[(*buf) * 2]);
+#endif
 		buf++;
 		i += 2;
 	} while (i < len * 2);
