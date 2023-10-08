@@ -13,7 +13,7 @@ HOSTNAME ?= $(shell uname -n)
 TARGET_BASE	= libdistorm3.so
 COBJS	= ../../src/mnemonics.o ../../src/textdefs.o ../../src/prefix.o ../../src/operands.o ../../src/insts.o ../../src/instructions.o ../../src/distorm.o ../../src/decoder.o
 CC	= c99
-CFLAGS	+= -O2 -WRVU=$(RVU) -Wnowarn=1506,226 -DSUPPORT_64BIT_OFFSET -DDISTORM_STATIC
+CFLAGS	+= -Wlp64 -O2 -WRVU=$(RVU) -Wnowarn=1506,226 -DSUPPORT_64BIT_OFFSET -DDISTORM_STATIC
 LDFLAGS	+= -WRVU=$(RVU) -Wshared
 PREFIX	= /usr/local
 # The lib SONAME version (ignored on NonStop):

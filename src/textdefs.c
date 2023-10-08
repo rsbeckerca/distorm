@@ -43,7 +43,8 @@ void str_hex(_WString* s, const uint8_t* buf, unsigned int len)
 	s->p[len * 2] = 0;
 	do {
 #ifdef __TANDEM
-		s->p[i]= RSHORT(&TextBTable[(*buf) * 2]);
+		s->p[i]= TextBTable[(*buf) * 2];
+		s->p[i+1]= TextBTable[(*buf) * 2 + 1];
 #else
 		RSHORT(&s->p[i]) = RSHORT(&TextBTable[(*buf) * 2]);
 #endif
